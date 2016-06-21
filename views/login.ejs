@@ -1,0 +1,15 @@
+<% layout('layout') -%>
+<hr>
+<h2><%= title %> page</h2><br>
+<div align="center">
+<h3>Please enter user name and user password</h3>
+<h4><%= msg%></h4>
+<form action="/logins/login" method="POST">
+	User Name:<input type="text" name="username">
+	<br/>
+	User Password:<input type="password" name="password">
+	<br/>
+	<input type="submit" value="Confirm">
+</form>
+</div>
+<input type ="button" onclick="javascript:location.href='http://localhost:3000/logins/register'" value="Or Register"></input>

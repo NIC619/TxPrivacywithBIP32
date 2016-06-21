@@ -1,0 +1,18 @@
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner" style="background-color:black">
+        <div class="container" >            
+            <a class="brand" href="/">Transaction Privacy with BIP32</a>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <% if (!logged) { %>
+                        <li><a href="/logins">Log In</a></li>
+                        <li><a href="/logins/register">Register</a></li>
+                    <% } else { %>
+                        <li><a href="/logins/logout">Log Out</a></li>
+                        <li><a href="/users">User Info</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

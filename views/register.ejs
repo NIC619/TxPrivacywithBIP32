@@ -1,0 +1,11 @@
+<%  layout('layout') -%>
+<hr>
+<h1><%= title %> page</h1><br>
+<%= msg %>
+<form action="/logins/register" method="POST">
+	Enter your user name : <input type="text" name="username">
+	</br>
+	Enter your password  : <input type="password" name="password">
+	</br>
+	<input type="submit" value="Confirm Register">
+</form>

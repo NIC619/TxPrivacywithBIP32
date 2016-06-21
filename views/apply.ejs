@@ -1,0 +1,19 @@
+<% layout('layout') -%>
+<hr>
+<h2><%= title %> page</h2>
+<% if(logged){%>
+	Welcome, <%=username%><br>
+<hr>
+<%}%>
+<h2>Pay</h2>
+<table border="1px solid black">
+	<tr><td>User</td><td><%= paycodes.username%></td></tr>
+	<tr><td>Fix address</td><td><%= paycodes.fix_address%></td></tr>
+	<tr><td>Pay Code</td><td><%= paycodes.pay_code%></td></tr>
+</table><br>
+<form action="/apply" method="POST">
+	<input type="hidden" name="pay_code" value="<%= paycodes.pay_code%>">
+	Input your secret key : <input type="text" name="secret_key">
+	<input type="submit" value="Pay">
+</form>
+<%= msg%>

@@ -1,0 +1,16 @@
+<% layout('layout') -%>
+<hr>
+<h2><%= title %> page</h2>
+<% if(logged){%>
+	Welcome, <%=username%><br>
+<hr>
+<%}%>
+<h2>Your Pay Code</h2>
+<table border="1px solid black">
+	<%= msg %>
+	<tr><td>User</td><td><%= paycodes.username%></td></tr>
+	<tr><td>Fix address</td><td><%= paycodes.fix_address%></td></tr>
+	<tr><td>Pay Code</td><td><%= paycodes.pay_code%></td></tr>
+	<tr><td>Secret Key</td><td style="color: red"><%= paycodes.secret_key%></td></tr>
+	<tr><td>Private Key</td><td style="color: red"><%= paycodes.priv_key%></td></tr>
+</table><br>

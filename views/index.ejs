@@ -1,0 +1,23 @@
+<% layout('layout') -%>
+<hr>
+<h2><%= title %> page</h2>
+<% if(logged){%>
+	Welcome, <%=username%><br>
+<hr>
+<%}%>
+<h4>Register for passcode</h4>
+<form action="/" method="POST">
+	User Name : <input type="text" name="username"><br>
+	User's Fix Address : <input type="text" name="fix_address"><br>
+	Input random number : <input type=text name="random_number">
+	<input type="submit" value="Register">
+</form>
+
+<% codelist.forEach(function(code){ %>
+	<table border="1px solid black">
+		<tr><td>User</td><td><%= code.username%></td></tr>
+		<tr><td>Fix address</td><td><%= code.fix_address%></td></tr>
+		<tr><td>Pay code</td><td><%= code.pay_code%></td></tr>
+	</table>
+	<input type ="button" onclick="javascript:location.href='http://localhost:3000/apply?pay_code=<%=code.pay_code%>'" value="Apply"></input>
+<% }); %>

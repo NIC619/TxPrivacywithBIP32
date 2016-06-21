@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include head %>
+  </head>
+  <body class="container">
+  	<header>
+  		<% include header %>
+  	</header>
+<!--
+	<script type="text/javascript">
+		$(document).ready(function(){
+			if(<%= logged %>){
+				$("#login_ref").attr("action" , "/logins/logout");
+				$("#login_ref_button").attr("value" , "Log Out");
+			}
+		});
+		
+	</script>
+-->
+   	<%- body %>
+   	<hr>
+   	<footer>
+   		<% include footer %>
+   	</footer>
+  </body>
+</html>

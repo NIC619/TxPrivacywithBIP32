@@ -1,0 +1,11 @@
+{
+  "name": "tx_privacy_with_bip32",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "NIC",
+  "license": "ISC"
+}
