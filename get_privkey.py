@@ -6,7 +6,7 @@
 import os 
 import sys
 
-BIP32CALL = "/Users/NIC/Documents/Docker-Volume/test/TxPrivacywithBIP32/bip32utils/bip32gen"
+BIP32CALL = "/Users/NIC/Documents/Docker-Volume/test/TxPrivacywithBIP32/utils/bip32gen"
 
 if len(sys.argv) < 4:
 	print 'wrong input, you need to give me payment code and secret key'
@@ -30,4 +30,4 @@ addr = p.readline()
 addr = addr[0:len(addr)-1]
 privkey = p.readline()
 privkey = privkey[0:len(privkey)-1]
-print "{\"addr\":\"" + str(addr) + "\"," + "\"privkey\":" + str(privkey) + "\"}"
+print "{\"addr\":\"" + str(addr) + "\"," + "\"privkey\":\"" + str(privkey) + "\"}"

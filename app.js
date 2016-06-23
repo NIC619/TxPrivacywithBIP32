@@ -14,6 +14,7 @@ var port_num = process.env.PORT || 3000;
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var logins = require('./routes/login'); 
+var tx = require('./routes/tx');
 //var contracts = require('./routes/contracts');
 
 var app = express();
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/logins', logins);
+app.use('/tx', tx);
 //app.use('/' , contracts);
 
 // catch 404 and forward to error handler

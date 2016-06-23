@@ -13,6 +13,14 @@ var paycode = new Schema({
 		pay_code : String
 });
 
+var tx = new Schema({
+		type : String,
+		sender : String,
+		receiver : String,
+		content : String
+});
+
+mongoose.model('tx' , tx);
 mongoose.model('user_profile' , user_profile);
 mongoose.model('paycode' , paycode);
 mongoose.connect('mongodb://localhost/txprivacywithbip32_database');

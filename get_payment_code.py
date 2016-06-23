@@ -4,7 +4,7 @@ import os
 import sys
 import hashlib
 
-BIP32CALL = "/Users/NIC/Documents/Docker-Volume/test/TxPrivacywithBIP32/bip32utils/bip32gen"
+BIP32CALL = "/Users/NIC/Documents/Docker-Volume/test/TxPrivacywithBIP32/utils/bip32gen"
 
 # get entropy from user input
 if len(sys.argv) < 2:

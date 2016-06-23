@@ -11,10 +11,12 @@
 	<tr><td>Fix address</td><td><%= paycodes.fix_address%></td></tr>
 	<tr><td>Pay Code</td><td><%= paycodes.pay_code%></td></tr>
 </table><br>
-<form action="/apply" method="POST">
+<form action="/getpriv" method="POST">
+	<input type="hidden" name="dh" value="<%= dh%>">
 	<input type="hidden" name="pay_code" value="<%= paycodes.pay_code%>">
+	Input your private key : <input type="text" name="private_key">
 	Input your secret key : <input type="text" name="secret_key">
-	Random Number : <input type="text" name="nonce">
-	<input type="submit" value="Pay">
+	Input Nonce : <input type="text" name="nonce">
+	<input type="submit" value="Get Key">
 </form>
 <%= msg%>

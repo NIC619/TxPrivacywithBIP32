@@ -6,7 +6,7 @@ var exec =require('child_process').exec;
 router.get('/', function(req, res) {
 	//paycode.find().remove().exec();
 	paycode.find(function(err, codes){
-		res.render('index', {title: 'Code List', logged: req.session.iflogin, username: req.session.username, codelist: codes});
+		res.render('index', {title: 'Code List', logged: req.session.iflogin, username: req.session.username, codelist: codes.reverse()});
 	});
 	/*
 	if(req.session.logined){
@@ -64,7 +64,7 @@ router.post('/apply', function(req, res) {
 		for(var index in codes){
 			var code = codes[index];
 			if(code.pay_code == req.body.pay_code){
-				var cmd = 'python get_address.py "' + req.body.pay_code + '" ' + req.body.secret_key;
+				var cmd = 'python get_address.py "' + req.body.pay_code + '" ' + req.body.secret_key + req.body.nonce;
 				//console.log("cmd: " + cmd);
 				const child = exec(cmd,
 				  (error, stdout, stderr) => {
@@ -78,6 +78,47 @@ router.post('/apply', function(req, res) {
 				    }
 				    else{
 				    	res.render('apply', {title: "Apply", logged: req.session.iflogin , username: req.session.username , paycodes: code , msg:'Receiving Address : ' + stdout.addr});
+						res.end();
+					}
+				});
+				return;
+			}
+		}
+	});
+});
+
+router.get('/getpriv', function(req, res){
+	var dh_public = req.query.pay_code.split('||')[1];
+	paycode.find(function(err, codes){
+		for(var index in codes){
+			var code = codes[index];
+			if(code.pay_code == req.query.pay_code){
+				res.render('getpriv', {title: "Get Private Key", logged: req.session.iflogin , username: req.session.username , paycodes: code , dh: dh_public , msg: ''});
+				return;
+			}
+		}
+	});
+});
+
+router.post('/getpriv', function(req, res){
+	paycode.find(function(err, codes){
+		for(var index in codes){
+			var code = codes[index];
+			if(code.pay_code == req.body.pay_code){
+				var cmd = 'python get_privkey.py ' + req.body.private_key + ' ' + req.body.secret_key + req.body.nonce + ' ' + req.body.dh;
+				//console.log("cmd: " + cmd);
+				const child = exec(cmd,
+				  (error, stdout, stderr) => {
+				  	stdout = JSON.parse(stdout);
+				    console.log('stdout: ', stdout);
+				    //console.log('stderr: ', stderr);
+				    if (error !== null) {
+				      //console.log('exec error: ', error);
+				      res.render('getpriv', {title: "Get Private Key", logged: req.session.iflogin , username: req.session.username , paycodes: code , dh: req.body.dh , msg: error});
+				      res.end();
+				    }
+				    else{
+				    	res.render('getpriv', {title: "Get Private Key", logged: req.session.iflogin , username: req.session.username , paycodes: code , dh: req.body.dh  , msg:'Private Key for this address: ' + stdout.privkey});
 						res.end();
 					}
 				});

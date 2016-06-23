@@ -6,6 +6,7 @@ var username = '';
 
 //測試使用者登入
 router.get('/' , function(req , res){
+	//user_profile.find().remove().exec();
 	//console.log("user login");
 	if(req.session.iflogin){
 		//res.send('user already login!');
@@ -21,6 +22,7 @@ router.get('/' , function(req , res){
 
 //處理登入
 router.post('/login' , function(req , res){
+
 	user_profile.find(function(err , users){
 		for(var index in users){
 			var user = users[index];
@@ -97,7 +99,8 @@ router.post('/register' , function(req , res){
 		var user = new user_profile();
 		user.user_name = req.body.username;
 		user.password = req.body.password;
-		user.fix_address = '1234q2fqr23rkj2n34l1234';
+		var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		user.fix_address = '1' + Array(33).join().split(',').map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');;
 		user.save();
 		//username = req.body.username;
 		req.session.iflogin = true;

@@ -20,4 +20,5 @@
 		<tr><td>Pay code</td><td><%= code.pay_code%></td></tr>
 	</table>
 	<input type ="button" onclick="javascript:location.href='http://localhost:3000/apply?pay_code=<%=code.pay_code%>'" value="Apply"></input>
+	<input type ="button" onclick="javascript:location.href='http://localhost:3000/getpriv?pay_code=<%=code.pay_code%>'" value="Get Private Key"></input>
 <% }); %>

@@ -1,0 +1,27 @@
+<% layout('layout') -%>
+<hr>
+<h2><%= title %> page</h2>
+<% if(logged){%>
+	Welcome, <%=username%><br>
+<hr>
+<%}%>
+<h4>Make a Transaction</h4>
+<form action="/tx" method="POST">
+	Sender Address : <input type="text" name="sender"><br>
+	Reciever Address : <input type="text" name="receiver"><br>
+	Transaction Type : <select name="type">
+		<option value="OP_RETURN">OP_RETURN</option>
+		<option value="NORMAL">NORMAL</option>
+	</select><br>
+	Content : <input type=text name="content"><br>
+	<input type="submit" value="Confirm">
+</form>
+
+<% txlist.forEach(function(tx){ %>
+	<table border="1px solid black">
+		<tr><td>Type</td><td><%= tx.type%></td></tr>
+		<tr><td>Sender Address</td><td><%= tx.sender%></td></tr>
+		<tr><td>Receiver Address</td><td><%= tx.receiver%></td></tr>
+		<tr><td>Content</td><td><%= tx.content%></td></tr>
+	</table><br>
+<% }); %>

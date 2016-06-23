@@ -6,7 +6,7 @@
 import os 
 import sys
 
-BIP32CALL = "/Users/NIC/Documents/Docker-Volume/test/TxPrivacywithBIP32/bip32utils/bip32gen"
+BIP32CALL = "/Users/NIC/Documents/Docker-Volume/test/TxPrivacywithBIP32/utils/bip32gen"
 
 if len(sys.argv) < 3:
 	print 'wrong input, you need to give me payment code and secret key'
